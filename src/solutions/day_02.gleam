@@ -81,7 +81,7 @@ fn valid_game(turns: iterator.Iterator(CubeSet)) -> Bool {
     && turn.green <= valid_bag.green
     && turn.blue <= valid_bag.blue
   })
-  |> iterator.fold(True, fn(valid_game, turn_valid) { valid_game && turn_valid })
+  |> iterator.fold(True, bool.and)
 }
 
 fn bag_minimum(turns: iterator.Iterator(CubeSet)) -> CubeSet {

@@ -17,7 +17,7 @@ pub fn part_1_logic(input_lines: iterator.Iterator(String)) -> Int {
   input_lines
   |> iterator.map(get_numbers(_, None))
   |> iterator.map(fn(nums) { become_number(nums.0, nums.1) })
-  |> iterator.fold(from: 0, with: fn(total, current) { total + current })
+  |> iterator.fold(from: 0, with: int.add)
 }
 
 pub fn part_2(input_lines: iterator.Iterator(String)) {
