@@ -29,11 +29,16 @@ pub fn part_1_logic(input_lines: iterator.Iterator(String)) -> Int {
       |> iterator.map(to_game)
       |> valid_game
 
-    io.println(game_title <> " is a valid game: " <> bool.to_string(game_validity))
+    io.println(
+      game_title <> " is a valid game: " <> bool.to_string(game_validity),
+    )
     #(game_id, game_validity)
-  }) // Parse a game string with debug info
-  |> iterator.filter(fn (game_result) { game_result.1 }) // Filter out invalid games
-  |> iterator.fold(0, fn(id_total, result) { id_total + result.0 }) // Sum the game IDs
+  })
+  // Parse a game string with debug info
+  |> iterator.filter(fn(game_result) { game_result.1 })
+  // Filter out invalid games
+  |> iterator.fold(0, fn(id_total, result) { id_total + result.0 })
+  // Sum the game IDs
 }
 
 pub fn part_2(input_lines: iterator.Iterator(String)) {
@@ -56,7 +61,8 @@ pub fn part_2_logic(input_lines: iterator.Iterator(String)) -> Int {
     |> iterator.map(to_game)
     |> bag_minimum
     |> power
-  }) // Get the power of the minimum bag for the current game
+  })
+  // Get the power of the minimum bag for the current game
   |> iterator.fold(0, int.add)
 }
 
@@ -79,13 +85,17 @@ fn valid_game(turns: iterator.Iterator(CubeSet)) -> Bool {
 }
 
 fn bag_minimum(turns: iterator.Iterator(CubeSet)) -> CubeSet {
-  iterator.fold(over: turns, from: Cubes(red: 0, green: 0, blue: 0), with: fn(cube_maxes, turn) {
-    Cubes(
-      red: int.max(turn.red, cube_maxes.red),
-      green: int.max(turn.green, cube_maxes.green),
-      blue: int.max(turn.blue, cube_maxes.blue),
-    )
-  })
+  iterator.fold(
+    over: turns,
+    from: Cubes(red: 0, green: 0, blue: 0),
+    with: fn(cube_maxes, turn) {
+      Cubes(
+        red: int.max(turn.red, cube_maxes.red),
+        green: int.max(turn.green, cube_maxes.green),
+        blue: int.max(turn.blue, cube_maxes.blue),
+      )
+    },
+  )
 }
 
 fn power(bag: CubeSet) -> Int {
