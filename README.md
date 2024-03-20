@@ -1,25 +1,8 @@
-# advent_of_code
+# Advent of Code 2023 (Gleam)
 
-[![Package Version](https://img.shields.io/hexpm/v/advent_of_code)](https://hex.pm/packages/advent_of_code)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/advent_of_code/)
+Trying out Gleam via the 2023 advent of code! Every challenge is verified against each problem's
+sample data via unit tests.
 
-```sh
-gleam add advent_of_code
-```
-```gleam
-import advent_of_code
+Run the currently configured challenge with `gleam run`
 
-pub fn main() {
-  // TODO: An example of the project in use
-}
-```
-
-Further documentation can be found at <https://hexdocs.pm/advent_of_code>.
-
-## Development
-
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
-gleam shell # Run an Erlang shell
-```
+Run all challenges with `gleam test`
